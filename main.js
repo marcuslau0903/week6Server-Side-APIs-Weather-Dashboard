@@ -9,11 +9,29 @@ const renderCities = (citiesFromLocalStorage) => {
     cardDiv.attr("class","border border-warning  border-2 m-3 p-3")
 
     const dateDiv = $("<div>")
-    const spanDiv = $("<span>")
-    spanDiv.attr("id","divDate")
-    dateDiv.append(spanDiv)
-    console.log(dateDiv)
+    const dateSpan = $("<span>")
+    dateSpan.attr("id","divDate")
     
+    const weatherIconDiv = $("<div")
+    const weatherIconSpan = $("<span>")
+    weatherIconSpan.attr("id","weatherIcon")
+
+    const temperatureDiv = $("<div>")
+    temperatureDiv.text("Temperature:")
+    const temperatureSpan = $("<span>")
+    temperatureSpan.attr("id","divTemperature")
+
+    const humidityDiv = $("<div>")
+    humidityDiv.text("Humidity:")
+    const humiditySpan = $("<span>")
+    humiditySpan.attr("id","divHumidity")
+
+    dateDiv.append(spanDiv)
+    weatherIconDiv.append(spanDiv)
+    temperatureDiv.append(temperatureSpan)
+    humidityDiv.append(humiditySpan)
+
+    cardDiv.append 
   }
 }
 
