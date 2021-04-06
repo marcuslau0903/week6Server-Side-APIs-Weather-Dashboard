@@ -1,5 +1,20 @@
 const renderCities = (citiesFromLocalStorage) => {
     //for each city construct a list item and append to the list group
+  const disPlayWeatherContainer = $("<div>")
+  disPlayWeatherContainer.attr("class","d-flex flex-row flex-wrap justify-content-between bd-highlight mt-5")
+
+  const constructCard = (forEachForecast) => {
+
+    const cardDiv = $("<div>")
+    cardDiv.attr("class","border border-warning  border-2 m-3 p-3")
+
+    const dateDiv = $("<div>")
+    const spanDiv = $("<span>")
+    spanDiv.attr("id","divDate")
+    dateDiv.append(spanDiv)
+    console.log(dateDiv)
+    
+  }
 }
 
 const getCurrentData = (oneApiData) => {
@@ -8,7 +23,7 @@ const getCurrentData = (oneApiData) => {
     name: "",
     date: "",
     iconURL: "",
-    tempreature:"",
+    temperature:"",
     humidity:"",
     windSpeed:"",
     uvIndex:0
@@ -31,10 +46,10 @@ const fetchAllWeatherData = (cityName) => {
       const functionToHandleError = (errorObject) => {
         // handle your error here according to your application
       }
-      fetch(`api.openweathermap.org/data/2.5/weather?q=${}&appid=deb3f4250cb3403a6131e817bc7b59a9`)
-        .then(weatherApiUrl)
-        .then(functionForApplication)
-        .catch(functionToHandleError)
+      // fetch(`api.openweathermap.org/data/2.5/weather?q=${}&appid=deb3f4250cb3403a6131e817bc7b59a9`)
+      //   .then(weatherApiUrl)
+      //   .then(functionForApplication)
+      //   .catch(functionToHandleError)
 }
 // function called on load of the document
 const onLoad = () => {
