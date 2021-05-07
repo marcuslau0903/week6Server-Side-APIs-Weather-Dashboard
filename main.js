@@ -100,7 +100,6 @@ console.log(currentDayData)
 };
 
 const renderCitiesFromLocalStorage = () => {
-  $("#searchedCities").empty()
   //get cities from LS
   const cities = getFromLocalStorage()
   console.log(cities)
@@ -145,6 +144,8 @@ const clear = () => {
 localStorage.clear()
 console.log(localStorage)
 $("#searchedCities").empty()
+$("#parentForCastContainer").empty();
+$("#disPlayWeatherContainer").empty()
 }
 
 

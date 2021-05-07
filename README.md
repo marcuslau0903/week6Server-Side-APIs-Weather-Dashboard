@@ -23,7 +23,7 @@ Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather da
 - [x] WHEN I click on a city in the search history
 - [x] THEN I am again presented with current and future conditions for that city
 
-## Extras:
+## Extra Features:
 - [x] Handles repetition, searched cities will only be able to render once.
-- [x] Clear button to clear local storage on click.
+- [x] Clear button will clear local storage and rendered information on click.
 
