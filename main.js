@@ -29,7 +29,10 @@ const onSubmit = (event) => {
   const cityName = $("#searchInput").val()
   // get cities array from LS
   const cities = getFromLocalStorage()
+  
+  const index = cities.indexOf(cityName)
 
+  if (index <= -1) {
   cities.push(cityName)
   localStorage.setItem("cities", JSON.stringify(cities))
 
@@ -38,6 +41,8 @@ const onSubmit = (event) => {
   $("#searchInput").val("")
 
   renderAllCards(cityName)
+  }
+  
 }
 
 const getDataByCityName = async (event) => {
@@ -73,15 +78,15 @@ const transformForecastData = (data) => {
 //set place holders for API URLS 
 const renderAllCards = async (cityName) => {
   const currentDayUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${myApiKey}`;
-
+  
   const currentDayResponse = await fetchData(currentDayUrl);
-
+  
   const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDayResponse.coord.lat}&lon=${currentDayResponse.coord.lon}&exclude=minutely,hourly&units=metric&appid=${myApiKey}`;
 
   const forecastResponse = await fetchData(forecastUrl);
-
+  console.log(forecastResponse)
   const cardsData = forecastResponse.daily.map(transformForecastData);
-
+  
   $("#parentForCastContainer").empty();
 
   cardsData.slice(1, 6).forEach(renderForecastCard);
@@ -90,18 +95,18 @@ const renderAllCards = async (cityName) => {
     forecastResponse,
     currentDayResponse.name
   );
-
+console.log(currentDayData)
   renderCurrentDayCard(currentDayData);
 };
 
 const renderCitiesFromLocalStorage = () => {
-  $("searchedCities").empty()
+  $("#searchedCities").empty()
   //get cities from LS
   const cities = getFromLocalStorage()
- 
+  console.log(cities)
   //create list here
-  const ul = $("<ul>").addClass("list-group","gap-3");
-
+  const ul = $("<ul>").addClass("list-group","gap-3","bg-warning","fw-bold");
+  
   const appendListItemToUl = (city) => {
     const li = $("<li>")
       .addClass("list-group-item","rounded-3","bg-warning","fw-bold")
@@ -114,15 +119,15 @@ const renderCitiesFromLocalStorage = () => {
   cities.forEach(appendListItemToUl);
 
   ul.on("click", getDataByCityName);
-
-  $("#searched-cities").append(ul);
+  
+  $("#searchedCities").append(ul);
 }
 
 const renderCurrentDayCard = (data) => {
   $("#disPlayWeatherContainer").empty();
 
-  const card = `<div class="card my-2">
-    <div class="card-body">
+  const card = `<div class="my-2">
+    <div>
       <h2>
         ${data.cityName} (${data.date}) <img src="${data.iconURL}" />
       </h2>
@@ -130,25 +135,31 @@ const renderCurrentDayCard = (data) => {
       <div class="py-2">Humidity: ${data.humidity}%</div>
       <div class="py-2">Wind Speed: ${data.windSpeed} MPH</div>
       <div class="py-2">UV Index: <span class="">${data.uvi}</span></div>
+    <h2 class="text-center my-4">5-Day Forecast</h2>
     </div>
   </div>`;
-
   $("#disPlayWeatherContainer").append(card);
 };
 
+const clear = () => {
+localStorage.clear()
+console.log(localStorage)
+$("#searchedCities").empty()
+}
+
+
 const renderForecastCard = (data) => {
-  const card = `<div class="card mh-100 bg-primary text-light rounded card-block">
+  const card = `<div class="card mh-100 bg-warning text-dark rounded card-block">
     <h5 class="card-title p-1">${data.date}</h5>
-    <img src="${data.iconURL}" />
-    <h6 class="card-subtitle mb-2 text-light p-md-2">
+    <img src="${data.iconURL}"/>
+    <h6 class="card-subtitle mb-2 text-dark p-md-2">
       Temperature: ${data.temperature}&deg; C
     </h6>
-    <h6 class="card-subtitle mb-2 text-light p-md-2">
+    <h6 class="card-subtitle mb-2 text-dark p-md-2">
       Humidity: ${data.humidity}%
     </h6>
   </div>`;
-
-  $("#forecast-cards-container").append(card);
+  $("#parentForCastContainer").append(card);
 };
 
 
@@ -156,6 +167,6 @@ const onReady = () => {
   renderCitiesFromLocalStorage()
 }
 
-$("#searchBtn").on("submit", onSubmit)
-
+$("#search-by-city-form").on("submit", onSubmit)
+$("#clearBtn").on("click",clear)
 $(document).ready(onReady)
