@@ -13,7 +13,7 @@ const getFromLocalStorage = () => {
 const fetchData = async (url) => {
   try {
     const response = await fetch(url);
-    console.log(response)
+    
     const data = await response.json();
 
     return data;
@@ -84,7 +84,7 @@ const renderAllCards = async (cityName) => {
   const forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentDayResponse.coord.lat}&lon=${currentDayResponse.coord.lon}&exclude=minutely,hourly&units=metric&appid=${myApiKey}`;
 
   const forecastResponse = await fetchData(forecastUrl);
-  console.log(forecastResponse)
+
   const cardsData = forecastResponse.daily.map(transformForecastData);
   
   $("#parentForCastContainer").empty();
@@ -95,14 +95,13 @@ const renderAllCards = async (cityName) => {
     forecastResponse,
     currentDayResponse.name
   );
-console.log(currentDayData)
+
   renderCurrentDayCard(currentDayData);
 };
 
 const renderCitiesFromLocalStorage = () => {
   //get cities from LS
   const cities = getFromLocalStorage()
-  console.log(cities)
   //create list here
   const ul = $("<ul>").addClass("list-group","gap-3","bg-warning","fw-bold");
   
@@ -142,7 +141,7 @@ const renderCurrentDayCard = (data) => {
 
 const clear = () => {
 localStorage.clear()
-console.log(localStorage)
+
 $("#searchedCities").empty()
 $("#parentForCastContainer").empty();
 $("#disPlayWeatherContainer").empty()
