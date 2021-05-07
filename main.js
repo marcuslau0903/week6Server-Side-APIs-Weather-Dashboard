@@ -13,7 +13,7 @@ const getFromLocalStorage = () => {
 const fetchData = async (url) => {
   try {
     const response = await fetch(url);
-
+    console.log(response)
     const data = await response.json();
 
     return data;
@@ -62,7 +62,7 @@ const transformCurrentDayData = (data, name) => {
     humidity: current.humidity,
     windSpeed: current.wind_speed,
     date: moment.unix(current.dt).format("MM/DD/YYYY"),
-    iconURL: `http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`,
+    iconURL: `https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`,
     uvi: current.uvi,
   };
 };
@@ -70,14 +70,14 @@ const transformCurrentDayData = (data, name) => {
 const transformForecastData = (data) => {
   return {
     date: moment.unix(data.dt).format("MM/DD/YYYY"),
-    iconURL: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+    iconURL: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     temperature: data.temp.day,
     humidity: data.humidity,
   };
 };
 //set place holders for API URLS 
 const renderAllCards = async (cityName) => {
-  const currentDayUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${myApiKey}`;
+  const currentDayUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${myApiKey}`;
   
   const currentDayResponse = await fetchData(currentDayUrl);
   
