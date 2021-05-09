@@ -121,21 +121,33 @@ const renderCitiesFromLocalStorage = () => {
   $("#searchedCities").append(ul);
 }
 
+
+const uvColor = (uvIndex) =>{
+  if (uvIndex <= 2) {
+    return "text-success"
+  } else if (uvIndex > 3 || uvIndex <= 5) {
+    return "text-warning"
+  } else if (uvIndex > 5) {
+    return "text-danger"
+  }
+}
+
 const renderCurrentDayCard = (data) => {
   $("#disPlayWeatherContainer").empty();
-
-  const card = `<div class="my-2">
-    <div>
+  
+  const card = 
+  `<div class="my-2">
       <h2>
         ${data.cityName} (${data.date}) <img src="${data.iconURL}" />
       </h2>
       <div class="py-2">Temperature: ${data.temperature}&deg; C</div>
       <div class="py-2">Humidity: ${data.humidity}%</div>
       <div class="py-2">Wind Speed: ${data.windSpeed} MPH</div>
-      <div class="py-2">UV Index: <span class="">${data.uvi}</span></div>
-    <h2 class="text-center my-4">5-Day Forecast</h2>
-    </div>
+      <div class="py-2">UV Index: <span class="${uvColor(data.uvi)}">${data.uvi}</span></div>
+      <h2 class="text-center my-4">5-Day Forecast</h2>
   </div>`;
+  
+ 
   $("#disPlayWeatherContainer").append(card);
 };
 
@@ -169,4 +181,4 @@ const onReady = () => {
 
 $("#search-by-city-form").on("submit", onSubmit)
 $("#clearBtn").on("click",clear)
-$(document).ready(onReady)
+$(document).ready(onReady) 

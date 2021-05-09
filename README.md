@@ -1,29 +1,20 @@
 # 06 Server-Side APIs: Weather Dashboard
 
+## Objective: 
+This week's task is to develop a Weather Dashboard using frameworks such as HTML, Bootstrap, powered by Jquery and Javascript. The webpage will retrieve data from third-party weather API [OpenWeather API](https://openweathermap.org/api) by making fetch requests and dynamically render captured data results based on user search input.  In addition, the webpage requires `localStorage` to store any persistent data. 
+
 ## Link to deployed URL
 [https://marcuslau0903.github.io/week6Server-Side-APIs-Weather-Dashboard/]
 
-
-## Task This Week
-
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that provides basic setup and usage instructions. You will use `localStorage` to store any persistent data.
-
 ## Acceptance Criteria
 
-- [x] WHEN I search for a city
-- [x] THEN I am presented with current and future conditions for that city and that city is added to the search history
-- [x] WHEN I view current weather conditions for that city
-- [x] THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-- [x] WHEN I view the UV index
-- [ ] THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-- [x] WHEN I view future weather conditions for that city
-- [x] THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-- [x] WHEN I click on a city in the search history
-- [x] THEN I am again presented with current and future conditions for that city
+- [x] WHEN the user searches for a city, the webpage will fetch data from a weather API and return results of current and future weather conditions.
+- [x] Searched histories are added to local storage/presented below the search bar, it allows the user to revisit the city by clicking on them.
+- [x] Current weather conditions of that city includes the city name, date, an icon representation of weather conditions, the temperature, humidity, wind speed, and the UV index.
+- [x] The UV index is presented with a color that indicates whether the conditions are favorable in Green, moderate in Orange, or severe in Red. 
+- [x] The future weather conditions for that city is presented with a 5-day forecast that displays date, an icon representation of weather conditions, temperature, and humidity.
 
 ## Extra Features:
 - [x] Handles repetition, searched cities will only be able to render once.
-- [x] Clear button will clear local storage and rendered information on click.
+- [x] Clear button will clear local storage and rendered information on click, presenting a clean page.
 
