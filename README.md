@@ -1,12 +1,10 @@
-# 06 Server-Side APIs: Weather Dashboard
-
-## Objective: 
-This week's task is to develop a Weather Dashboard using frameworks such as HTML, Bootstrap, powered by Jquery and Javascript. The webpage will retrieve data from third-party weather API [OpenWeather API](https://openweathermap.org/api) by making fetch requests and dynamically render captured data results based on user search input.  In addition, the webpage requires `localStorage` to store any persistent data. 
+# Server-Side APIs: Weather Dashboard
 
 ## Link to deployed URL
 [https://marcuslau0903.github.io/week6Server-Side-APIs-Weather-Dashboard/]
 
-## Acceptance Criteria
+## Descriptions: 
+A Weather Dashboard using frameworks such as HTML, Bootstrap, powered by Jquery and Javascript. The webpage will retrieve data from third-party weather API [OpenWeather API](https://openweathermap.org/api) by making fetch requests and dynamically render captured data results based on user search input.  In addition, the webpage requires `localStorage` to store any persistent data. 
 
 - [x] WHEN the user searches for a city, the webpage will fetch data from a weather API and return results of current and future weather conditions.
 - [x] Searched histories are added to local storage/presented below the search bar, it allows the user to revisit the city by clicking on them.
@@ -17,4 +15,12 @@ This week's task is to develop a Weather Dashboard using frameworks such as HTML
 ## Extra Features:
 - [x] Handles repetition, searched cities will only be able to render once.
 - [x] Clear button will clear local storage and rendered information on click, presenting a clean page.
+
+## Screen Shots: 
+
+![screenshot](./images/demo.PNG)
+
+![screensot](./images/weather.PNG)
+
+
 
