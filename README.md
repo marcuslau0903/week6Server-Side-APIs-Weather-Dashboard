@@ -18,9 +18,9 @@ A Weather Dashboard using frameworks such as HTML, Bootstrap, powered by Jquery 
 
 ## Screen Shots: 
 
-![screenshot](./images/demo.PNG)
+![screenshot1](./images/demo.PNG)
 
-![screensot](./images/weather.PNG)
+![screenshot2](./images/weather.PNG)
 
 
 
